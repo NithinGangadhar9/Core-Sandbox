@@ -45,7 +45,7 @@ Metadata:
       VPCID:
         default: Which VPC should this be deployed to?
 Resources:
-  VPC:
+  CoreVPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock:
@@ -70,7 +70,7 @@ Resources:
       InternetGatewayId:
         Ref: InternetGateway
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
   PrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
@@ -85,7 +85,7 @@ Resources:
       - Key: Name
         Value: Private Subnet 1
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -100,7 +100,7 @@ Resources:
       - Key: Name
         Value: Private Subnet 2
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
   PublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
@@ -115,7 +115,7 @@ Resources:
       - Key: Name
         Value: Public Subnet 1
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
   PublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
@@ -130,7 +130,7 @@ Resources:
       - Key: Name
         Value: Public Subnet 2
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
   NatGatewayEIP1:
     Type: AWS::EC2::EIP
     Properties:
@@ -148,7 +148,7 @@ Resources:
     Type: AWS::EC2::RouteTable
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
       Tags:
       - Key: Name
         Value: Public Route Table
@@ -178,7 +178,7 @@ Resources:
     Type: AWS::EC2::RouteTable
     Properties:
       VpcId:
-        Ref: VPC
+        Ref: CoreVPC
       Tags:
       - Key: Name
         Value: Private Route Table 1
@@ -208,7 +208,7 @@ Outputs:
   VPCID:
     Description: VPC ID
     Value:
-      Ref: VPC
+      Ref: CoreVPC
     Export:
       Name:
         Fn::Sub: "${AWS::StackName}-VPCID"

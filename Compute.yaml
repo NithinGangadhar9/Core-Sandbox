@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This is the EC2 stack to deploy the compute platform - version2.0
+
+Parameters:
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /dev/ec2/instanceType    
+  
+  ImageId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+  AvailabilityZone:
+    Description: Availability zone for the infrastructure
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /dev/ec2/availabilityzone
+
+Resources:
+  MyInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      AvailabilityZone: !Ref AvailabilityZone
+      ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType
+      SecurityGroups: 
+        - !Ref ServerSecurityGroup
+        - !Ref SSHSecurityGroup
+
+  SSHSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable Security for Server"
+      VpcId: 
+          Ref: CoreVPC
+      SecurityGroupIngress:
+        -
+          CidrIp: 10.0.2.1/32
+          FromPort: 22
+          IpProtocol: TCP
+          ToPort: 22
+  
+  ServerSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties: 
+      GroupDescription: "Enable Security for Server"
+      VpcId: 
+          Ref: CoreVPC
+      SecurityGroupIngress: 
+        - 
+          CidrIp: 10.0.2.2/32
+          FromPort: 80
+          IpProtocol: TCP
+          ToPort: 80
+
+Outputs:
+  MyInstanceIP:
+    Description: EC2 public IP
+    Value: !GetAtt MyInstance.PublicIp
