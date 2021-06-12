@@ -1,0 +1,36 @@
+organization:
+  roots:
+    Root:
+      accounts:
+      organizational-units:
+        Automation:
+          accounts:
+            -
+              name: Automation
+              email: RBCAWS330053006616@rbc.com
+              description:
+          policies:
+            - SCP-DenyLogging
+            - SCP-Automation
+        Prod:
+          accounts:
+            -
+              name: RBC Parent
+              email: RBCAWS105731918750@rbc.com
+              description:
+              enabled: true
+              master: true
+          policies:
+            - SCP-DenyLogging
+            - SCP-Automation
+        Nonp:
+          accounts:
+            -
+              name: RBC Parent
+              email: RBCAWS105731918750@rbc.com
+              description:
+              enabled: true
+              master: true
+          policies:
+            - SCP-DenyLogging
+            - SCP-Automation
