@@ -31,8 +31,9 @@ Resources:
     Type: "AWS::EC2::SecurityGroup"
     Properties:
       GroupDescription: "Enable Security for Server"
-      VpcId: 
-          Ref: CoreVPC
+      VpcId:
+          Fn::ImportValue:
+            Fn::Sub: "${AWS::StackName}-VPCID"
       SecurityGroupIngress:
         -
           CidrIp: 10.0.2.1/32
@@ -44,8 +45,9 @@ Resources:
     Type: "AWS::EC2::SecurityGroup"
     Properties: 
       GroupDescription: "Enable Security for Server"
-      VpcId: 
-          Ref: CoreVPC
+      VpcId:
+          Fn::ImportValue:
+            Fn::Sub: "${AWS::StackName}-VPCID"
       SecurityGroupIngress: 
         - 
           CidrIp: 10.0.2.2/32
