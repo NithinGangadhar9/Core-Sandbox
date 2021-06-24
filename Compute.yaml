@@ -20,10 +20,8 @@ Resources:
   MyInstance:
     Type: "AWS::EC2::Instance"
     Properties:
-      AvailabilityZone: 
-        - !Ref AvailabilityZone
-      ImageId: 
-        - !Ref ImageId
+      AvailabilityZone: !Ref AvailabilityZone
+      ImageId: !Ref ImageId
       InstanceType: 
         - !Ref InstanceType
       SecurityGroups: 
