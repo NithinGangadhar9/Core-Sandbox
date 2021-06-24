@@ -33,7 +33,7 @@ Resources:
       GroupDescription: "Enable Security for Server"
       VpcId:
           Fn::ImportValue:
-            Fn::Sub: "${AWS::StackName}-VPCID"
+            Fn::Sub: core-network-VPCID
       SecurityGroupIngress:
         -
           CidrIp: 10.0.2.1/32
