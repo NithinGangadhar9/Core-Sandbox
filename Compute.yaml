@@ -22,8 +22,7 @@ Resources:
     Properties:
       AvailabilityZone: !Ref AvailabilityZone
       ImageId: !Ref ImageId
-      InstanceType: 
-        - !Ref InstanceType
+      InstanceType: !Ref InstanceType
       SecurityGroups: 
         - !Ref ServerSecurityGroup
         - !Ref SSHSecurityGroup
