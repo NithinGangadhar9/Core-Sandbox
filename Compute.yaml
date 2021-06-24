@@ -7,9 +7,9 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Default: /dev/ec2/instanceType    
   
-  ImageId:
-    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
-    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+  #ImageId:
+  #  Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+  #  Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
 
   AvailabilityZone:
     Description: Availability zone for the infrastructure
@@ -21,7 +21,7 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       AvailabilityZone: !Ref AvailabilityZone
-      ImageId: !Ref ImageId
+      ImageId: ami-07d95746fec4b20a3
       InstanceType: !Ref InstanceType
       SecurityGroups: 
         - !Ref ServerSecurityGroup
