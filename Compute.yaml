@@ -16,16 +16,19 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Default: /dev/ec2/availabilityzone
 
-Resources:
-  MyInstance:
-    Type: "AWS::EC2::Instance"
-    Properties:
-      AvailabilityZone: !Ref AvailabilityZone
-      ImageId: !Ref ImageId
-      InstanceType: !Ref InstanceType
+Resources: 
+  MyInstance: 
+    Properties: 
+      AvailabilityZone: 
+        Ref: AvailabilityZone
+      ImageId: 
+        Ref: ImageId
+      InstanceType: 
+        Ref: InstanceType
       SecurityGroups: 
-        - !Ref core-network-ServerSecurityGroup
-        - !Ref core-network-SSHSecurityGroup
+        - Ref: core-network-ServerSecurityGroup
+        - Ref: core-network-SSHSecurityGroup
+    Type: "AWS::EC2::Instance"
 
 #  SSHSecurityGroup:
 #    Type: "AWS::EC2::SecurityGroup"
