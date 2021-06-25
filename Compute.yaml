@@ -24,8 +24,8 @@ Resources:
       ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType
       SecurityGroups: 
-        - !Ref core-network-ServerSecurityGroup
-        - !Ref core-network-SSHSecurityGroup
+        - Ref: core-network-ServerSecurityGroup
+        - Ref: core-network-SSHSecurityGroup
 
 #  SSHSecurityGroup:
 #    Type: "AWS::EC2::SecurityGroup"
