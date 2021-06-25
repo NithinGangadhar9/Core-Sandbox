@@ -204,6 +204,34 @@ Resources:
         Ref: NatGateway1
       RouteTableId:
         Ref: PrivateRouteTable1
+  SSHSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable Security for Server"
+      VpcId:
+          Fn::ImportValue:
+            Fn::Sub: "${AWS::StackName}-VPCID"
+      SecurityGroupIngress:
+        -
+          CidrIp: 10.0.2.1/32
+          FromPort: 22
+          IpProtocol: TCP
+          ToPort: 22
+  ServerSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties: 
+      GroupDescription: "Enable Security for Server"
+      VpcId:
+          Fn::ImportValue:
+            Fn::Sub: "${AWS::StackName}-VPCID"
+      SecurityGroupIngress: 
+        - 
+          CidrIp: 10.0.2.2/32
+          FromPort: 80
+          IpProtocol: TCP
+          ToPort: 80
+
+
 Outputs:
   VPCID:
     Description: VPC ID
@@ -240,11 +268,18 @@ Outputs:
     Export:
       Name:
         Fn::Sub: "${AWS::StackName}-PrivateSubnet1"
-  PrivateSubnet2:
-    Description: Private Subnet 2
+  SSHSecurityGroup:
+    Description: SSH Security Group 
     Value:
-      Ref: PrivateSubnet2
+      Ref: SSHSecurityGroup
     Export:
       Name:
-        Fn::Sub: "${AWS::StackName}-PrivateSubnet2"
+        Fn::Sub: "${AWS::StackName}-SSHSecurityGroup"
+  ServerSecurityGroup:
+    Description: Server Security Group
+    Value:
+      Ref: ServerSecurityGroup
+    Export:
+      Name:
+        Fn::Sub: "${AWS::StackName}-ServerSecurityGroup"
         

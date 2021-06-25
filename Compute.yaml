@@ -24,36 +24,36 @@ Resources:
       ImageId: !Ref ImageId
       InstanceType: !Ref InstanceType
       SecurityGroups: 
-        - !Ref ServerSecurityGroup
-        - !Ref SSHSecurityGroup
+        - !Ref core-network-ServerSecurityGroup
+        - !Ref core-network-SSHSecurityGroup
 
-  SSHSecurityGroup:
-    Type: "AWS::EC2::SecurityGroup"
-    Properties:
-      GroupDescription: "Enable Security for Server"
-      VpcId:
-          Fn::ImportValue:
-            Fn::Sub: core-network-VPCID
-      SecurityGroupIngress:
-        -
-          CidrIp: 10.0.2.1/32
-          FromPort: 22
-          IpProtocol: TCP
-          ToPort: 22
+#  SSHSecurityGroup:
+#    Type: "AWS::EC2::SecurityGroup"
+#    Properties:
+#      GroupDescription: "Enable Security for Server"
+#      VpcId:
+#          Fn::ImportValue:
+#            Fn::Sub: core-network-VPCID
+#      SecurityGroupIngress:
+#        -
+#          CidrIp: 10.0.2.1/32
+#          FromPort: 22
+#          IpProtocol: TCP
+#          ToPort: 22
   
-  ServerSecurityGroup:
-    Type: "AWS::EC2::SecurityGroup"
-    Properties: 
-      GroupDescription: "Enable Security for Server"
-      VpcId:
-          Fn::ImportValue:
-            Fn::Sub: core-network-VPCID
-      SecurityGroupIngress: 
-        - 
-          CidrIp: 10.0.2.2/32
-          FromPort: 80
-          IpProtocol: TCP
-          ToPort: 80
+#  ServerSecurityGroup:
+#    Type: "AWS::EC2::SecurityGroup"
+#    Properties: 
+#      GroupDescription: "Enable Security for Server"
+#      VpcId:
+#          Fn::ImportValue:
+#            Fn::Sub: core-network-VPCID
+#      SecurityGroupIngress: 
+#        - 
+#          CidrIp: 10.0.2.2/32
+#          FromPort: 80
+#          IpProtocol: TCP
+#          ToPort: 80
 
 Outputs:
   MyInstanceIP:
