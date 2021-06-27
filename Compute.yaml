@@ -26,8 +26,7 @@ Resources:
       InstanceType: 
         Ref: InstanceType
       SecurityGroups:
-        Fn::ImportValue:
-          - SSHSecurityGroup
+        Fn::ImportValue: SSHSecurityGroup
     Type: "AWS::EC2::Instance"
 
 #  SSHSecurityGroup:
