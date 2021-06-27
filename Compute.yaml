@@ -25,9 +25,9 @@ Resources:
         Ref: ImageId
       InstanceType: 
         Ref: InstanceType
-      SecurityGroups: 
-        - !Ref core-network-ServerSecurityGroup
-        - !Ref core-network-SSHSecurityGroup
+      SecurityGroups:
+        Fn::ImportValue:
+          SSHSecurityGroup
     Type: "AWS::EC2::Instance"
 
 #  SSHSecurityGroup:
