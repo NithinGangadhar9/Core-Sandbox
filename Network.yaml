@@ -266,13 +266,11 @@ Outputs:
     Export:
       Name:
         Fn::Sub: "${AWS::StackName}-PrivateSubnet1"
-  #SSHSecurityGroup:
-  #  Description: SSH Security Group 
-  #  Value:
-  #    Ref: SSHSecurityGroup
-  #  Export:
-  #    Name: 
-  #      Fn::Sub: "${AWS::StackName}-SSHSecurityGroup"
+  SSHSecurityGroup:
+    Description: SSH Security Group 
+    Value: !Ref SSHSecurityGroup
+    Export:
+      Name: !Sub: "${AWS::StackName}-SSHSecurityGroup"
   ServerSecurityGroup:
     Description: Server Security Group
     Value:
@@ -280,13 +278,4 @@ Outputs:
     Export:
       Name: 
         Fn::Sub: "${AWS::StackName}-ServerSecurityGroup"
-  SSHSecurityGroup:
-    Description: The security group ID to use for public web servers
-    Value:
-      'Fn::GetAtt':
-        - SSHSecurityGroup
-        - GroupId
-    Export:
-      Name:
-        'Fn::Sub': '${AWS::StackName}-SSHSecurityGroup'
         
