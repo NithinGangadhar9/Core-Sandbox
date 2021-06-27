@@ -28,7 +28,7 @@ Resources:
       SecurityGroups: 
         - GroupSet:
             - !ImportValue 
-              'Fn::Sub': '${core-network}-SSHSecurityGroup'
+              'Fn::Sub': '${CoreNetwork}-SSHSecurityGroup'
     Type: "AWS::EC2::Instance"
 
 #  SSHSecurityGroup:
