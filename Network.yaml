@@ -270,7 +270,8 @@ Outputs:
     Description: SSH Security Group 
     Value: !Ref SSHSecurityGroup
     Export:
-      Name: !Sub: "${AWS::StackName}-SSHSecurityGroup"
+      Name: 
+        Fn::Sub: "${AWS::StackName}-SSHSecurityGroup"
   ServerSecurityGroup:
     Description: Server Security Group
     Value:
