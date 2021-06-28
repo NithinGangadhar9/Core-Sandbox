@@ -26,8 +26,8 @@ Resources:
       InstanceType: 
         Ref: InstanceType
       SecurityGroups: 
-        Fn::ImportValue:
-          !Sub "${CoreNetwork}-SSHSecurityGroup"
+        - !ImportValue SSHSecurityGroup
+          
     Type: "AWS::EC2::Instance"
 
 #  SSHSecurityGroup:
