@@ -18,7 +18,7 @@ Description: This is the EC2 stack to deploy the compute platform - version2.0
 
 Resources: 
   MyInstance:
-    Type: "AWS::EC2::Instance"
+    Type: AWS::EC2::Instance
     Properties: 
       AvailabilityZone: ca-central-1a
       #  Ref: AvailabilityZone
