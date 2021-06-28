@@ -29,7 +29,7 @@ Resources:
       SecurityGroupIds: 
         - !ImportValue CoreNetwork-SSHSecurityGroup
       SubnetId: 
-        - !ImportValue CoreNetwork-PublicSubnet1
+        !ImportValue CoreNetwork-PublicSubnet1
         #- !ImportValue CoreNetwork-PrivateSubnet1
 
 
