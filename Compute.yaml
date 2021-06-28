@@ -35,5 +35,5 @@ Resources:
 
 Outputs:
   MyInstanceIP:
-    Description: EC2 public IP
+    Description: EC2 private IP
     Value: !GetAtt MyInstance.PrivateIp
