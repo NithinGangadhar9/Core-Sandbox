@@ -26,7 +26,7 @@ Resources:
       InstanceType: 
         Ref: InstanceType
       SecurityGroups: 
-        - !ImportValue SSHSecurityGroup
+        - !ImportValue CoreNetwork-SSHSecurityGroup
           
     Type: "AWS::EC2::Instance"
 
