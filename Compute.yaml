@@ -31,7 +31,6 @@ Resources:
         - !ImportValue CoreNetwork-ServerSecurityGroup
       SubnetId: 
         !ImportValue CoreNetwork-PublicSubnet1
-        #- !ImportValue CoreNetwork-PrivateSubnet1
 
 
 Outputs:
