@@ -22,7 +22,7 @@ Resources:
     Properties: 
       AvailabilityZone: ca-central-1a
       #  Ref: AvailabilityZone
-      ImageId: ami-0c3eda36031ff1578
+      ImageId: ami-07d95746fec4b20a3
       #  Ref: ImageId
       InstanceType: t2.micro
       #  Ref: InstanceType
