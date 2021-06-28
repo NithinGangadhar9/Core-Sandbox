@@ -26,7 +26,7 @@ Resources:
       #  Ref: ImageId
       InstanceType: t2.micro
       #  Ref: InstanceType
-      SecurityGroupsIds: 
+      SecurityGroupIds: 
         - !ImportValue CoreNetwork-SSHSecurityGroup
 
 
