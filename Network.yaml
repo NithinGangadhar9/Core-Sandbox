@@ -40,7 +40,7 @@ Metadata:
       - PublicSubnetCIDR1
       - PublicSubnetCIDR2
       - PrivateSubnetCIDR1
-      - PrivateSubnetCIDR2
+      #- PrivateSubnetCIDR2
     ParameterLabels:
       VPCID:
         default: Which VPC should this be deployed to?
@@ -110,21 +110,21 @@ Resources:
         Value: Private Subnet 1
       VpcId:
         Ref: CoreVPC
-  PrivateSubnet2:
-    Type: AWS::EC2::Subnet
-    Properties:
-      CidrBlock:
-        Ref: PrivateSubnetCIDR2
-      AvailabilityZone:
-        Fn::Select:
-        - '1'
-        - Fn::GetAZs: ''
-      MapPublicIpOnLaunch: 'false'
-      Tags:
-      - Key: Name
-        Value: Private Subnet 2
-      VpcId:
-        Ref: CoreVPC
+  #PrivateSubnet2:
+  #  Type: AWS::EC2::Subnet
+  #  Properties:
+  #    CidrBlock:
+  #      Ref: PrivateSubnetCIDR2
+  #    AvailabilityZone:
+  #      Fn::Select:
+  #      - '1'
+  #      - Fn::GetAZs: ''
+  #    MapPublicIpOnLaunch: 'false'
+  #    Tags:
+  #    - Key: Name
+  #      Value: Private Subnet 2
+  #    VpcId:
+  #      Ref: CoreVPC
   PublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
