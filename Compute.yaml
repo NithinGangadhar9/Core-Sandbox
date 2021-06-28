@@ -33,7 +33,7 @@ Resources:
         #- !ImportValue CoreNetwork-PrivateSubnet1
 
 
-#Outputs:
-#  MyInstanceIP:
-#    Description: EC2 public IP
-#    Value: !GetAtt MyInstance.PublicIp
+Outputs:
+  MyInstanceIP:
+    Description: EC2 public IP
+    Value: !GetAtt MyInstance.PrivateIp
