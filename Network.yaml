@@ -213,13 +213,13 @@ Resources:
         Ref: PrivateRouteTable1
       SubnetId:
         Ref: PrivateSubnet1
-  AttachPrivateSubnet2RouteTable1:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      RouteTableId:
-        Ref: PrivateRouteTable1
-      SubnetId:
-        Ref: PrivateSubnet2
+  #AttachPrivateSubnet2RouteTable1:
+  #  Type: AWS::EC2::SubnetRouteTableAssociation
+  #  Properties:
+  #    RouteTableId:
+  #      Ref: PrivateRouteTable1
+  #    SubnetId:
+  #      Ref: PrivateSubnet2
   PrivateRoutetoNatGateway1:
     Type: AWS::EC2::Route
     Properties:
