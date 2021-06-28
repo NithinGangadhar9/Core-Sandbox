@@ -58,6 +58,30 @@ Resources:
         Value: Nonproduction
       - Key: Process
         Value: Onboarding
+  SSHSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable Security for Server"
+      VpcId:
+        Ref: CoreVPC  
+      SecurityGroupIngress:
+        -
+          CidrIp: 0.0.0.0/0
+          FromPort: 22
+          IpProtocol: TCP
+          ToPort: 22
+  ServerSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties: 
+      GroupDescription: "Enable Security for Server"
+      VpcId:
+        Ref: CoreVPC
+      SecurityGroupIngress: 
+        - 
+          CidrIp: 0.0.0.0/0
+          FromPort: 80
+          IpProtocol: TCP
+          ToPort: 80
   InternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties:
@@ -204,30 +228,6 @@ Resources:
         Ref: NatGateway1
       RouteTableId:
         Ref: PrivateRouteTable1
-  SSHSecurityGroup:
-    Type: "AWS::EC2::SecurityGroup"
-    Properties:
-      GroupDescription: "Enable Security for Server"
-      VpcId:
-        Ref: CoreVPC  
-      SecurityGroupIngress:
-        -
-          CidrIp: 0.0.0.0/0
-          FromPort: 22
-          IpProtocol: TCP
-          ToPort: 22
-  ServerSecurityGroup:
-    Type: "AWS::EC2::SecurityGroup"
-    Properties: 
-      GroupDescription: "Enable Security for Server"
-      VpcId:
-        Ref: CoreVPC
-      SecurityGroupIngress: 
-        - 
-          CidrIp: 0.0.0.0/0
-          FromPort: 80
-          IpProtocol: TCP
-          ToPort: 80
 
 
 Outputs:
